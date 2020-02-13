@@ -7,3 +7,17 @@
 .todo-list-container {
   margin-left: 20px;
 }
+
+.delete {
+  background-color: red;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+li {
+  margin-top: 10px;
+}

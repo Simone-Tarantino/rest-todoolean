@@ -14,6 +14,9 @@
 
     <h1>Todoolean</h1>
 
+    <input id="new-item-input" type="text" name="" value="">
+    <button id="send-new-item" type="button" name="button">Invia</button>
+
     <div class="todo-list-container">
       <ol class="todo-list">
 
@@ -22,8 +25,8 @@
 
 
     <script id="entry-template" type="text/x-handlebars-template">
-        <li class="todo-item">
-          {{item}}
+        <li class="todo-item" item-id="{{id}}">
+          {{item}} <span class="delete">x</span>
         </li>
     </script>
 
