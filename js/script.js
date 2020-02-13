@@ -12,27 +12,26 @@ $(document).ready(function(){
 
   $(document).on('click', '.delete', function(){
     var thisItem = $(this);
-    // var thisItemText = thisItem.prev().text();
+    var thisItemText = thisItem.prev().text();
     var thisItemId = thisItem.parent().attr('item-id');
-    deleteItem(thisItemId);
-  //   console.log(thisItemId);
-  //   areYouSure(thisItemText);
-  //   rerrr(thisItemId);
-  //   // $(document).on('click', '.choice', function(){
-  //   //   var thisChoice = $(this).attr('id-choice');
-  //   //   console.log(thisChoice);
-  //   //   if (thisChoice == 1){
-  //   //     deleteItem(thisItemId);
-  //   //     $('.rus-text').html('');
-  //   //     $('.are-you-sure').addClass('no-display');
-  //   //   } else if (thisChoice == 2){
-  //   //     $('.rus-text').html('');
-  //   //     $('.are-you-sure').addClass('no-display');
-  //   //   }
-  //   // });
+    console.log(thisItemId);
+    areYouSure(thisItemText);
+    deleteOrNot(thisItemId);
+    // $(document).on('click', '.choice', function(){
+    //   var thisChoice = $(this).attr('id-choice');
+    //   console.log(thisChoice);
+    //   if (thisChoice == 1){
+    //     deleteItem(thisItemId);
+    //     $('.rus-text').html('');
+    //     $('.are-you-sure').addClass('no-display');
+    //   } else if (thisChoice == 2){
+    //     $('.rus-text').html('');
+    //     $('.are-you-sure').addClass('no-display');
+    //   }
+    // });
   });
 
-  function rerrr(id){
+  function deleteOrNot(id){
     $(document).on('click', '.choice', function(){
       var thisChoice = $(this).attr('id-choice');
       console.log(thisChoice);
