@@ -12,9 +12,53 @@ $(document).ready(function(){
 
   $(document).on('click', '.delete', function(){
     var thisItem = $(this);
+    // var thisItemText = thisItem.prev().text();
     var thisItemId = thisItem.parent().attr('item-id');
     deleteItem(thisItemId);
+  //   console.log(thisItemId);
+  //   areYouSure(thisItemText);
+  //   rerrr(thisItemId);
+  //   // $(document).on('click', '.choice', function(){
+  //   //   var thisChoice = $(this).attr('id-choice');
+  //   //   console.log(thisChoice);
+  //   //   if (thisChoice == 1){
+  //   //     deleteItem(thisItemId);
+  //   //     $('.rus-text').html('');
+  //   //     $('.are-you-sure').addClass('no-display');
+  //   //   } else if (thisChoice == 2){
+  //   //     $('.rus-text').html('');
+  //   //     $('.are-you-sure').addClass('no-display');
+  //   //   }
+  //   // });
   });
+
+  function rerrr(id){
+    $(document).on('click', '.choice', function(){
+      var thisChoice = $(this).attr('id-choice');
+      console.log(thisChoice);
+      if (thisChoice == 1){
+        deleteItem(id);
+        $('.rus-text').html('');
+        $('.are-you-sure').addClass('no-display');
+      } else if (thisChoice == 2){
+        $('.rus-text').html('');
+        $('.are-you-sure').addClass('no-display');
+      }
+    });
+  }
+
+  // funzione finestra alert
+  function areYouSure(item){
+    $('.are-you-sure').removeClass('no-display');
+    var source = $("#rus-template").html();
+    var template = Handlebars.compile(source);
+    var context = {
+      text: 'Sei sicuro di volere eliminare ' +"'"+ item + "'" + '?'
+    };
+    var html = template(context);
+    $('.rus-text').append(html);
+  }
+
 
   // funzione per ottenere tutti gli elementi della lista tramite una chiamata GET
   function getAndPrintAllItems(){
@@ -51,6 +95,7 @@ $(document).ready(function(){
       success: function(data){
         $('.todo-list').html('');
         getAndPrintAllItems();
+        $('#new-item-input').val('');
       },
       error: function(request, state, errors){
         alert("C'è stato un errore" + errors);

@@ -23,11 +23,25 @@
       </ol>
     </div>
 
+    <div class="are-you-sure no-display">
+      <div class="rus-text">
+
+      </div>
+      <div class="choice-container">
+        <span id-choice="1" class="choice">SI</span> <span id-choice="2" class="choice">NO</span>
+      </div>
+    </div>
+
 
     <script id="entry-template" type="text/x-handlebars-template">
         <li class="todo-item" item-id="{{id}}">
-          {{item}} <span class="delete">x</span>
+          <span class="item">{{item}}</span>
+          <span class="delete">x</span>
         </li>
+    </script>
+
+    <script id="rus-template" type="text/x-handlebars-template">
+      {{text}}
     </script>
 
   </body>
