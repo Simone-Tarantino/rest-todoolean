@@ -15,39 +15,30 @@ $(document).ready(function(){
     var thisItemText = thisItem.prev().text();
     var thisItemId = thisItem.parent().attr('item-id');
     console.log(thisItemId);
-    areYouSure(thisItemText);
+    areYouSure(thisItemText, thisItemId);
     deleteOrNot(thisItemId);
-    // $(document).on('click', '.choice', function(){
-    //   var thisChoice = $(this).attr('id-choice');
-    //   console.log(thisChoice);
-    //   if (thisChoice == 1){
-    //     deleteItem(thisItemId);
-    //     $('.rus-text').html('');
-    //     $('.are-you-sure').addClass('no-display');
-    //   } else if (thisChoice == 2){
-    //     $('.rus-text').html('');
-    //     $('.are-you-sure').addClass('no-display');
-    //   }
-    // });
   });
 
   function deleteOrNot(id){
     $(document).on('click', '.choice', function(){
       var thisChoice = $(this).attr('id-choice');
+      var toDoId =  $(this).attr('id-data');
       console.log(thisChoice);
-      if (thisChoice == 1){
+      if (thisChoice == 1 && toDoId == id){
         deleteItem(id);
+        $('.choice-container').find('[id-choice="1"]').attr('id-data',  '');
         $('.rus-text').html('');
         $('.are-you-sure').addClass('no-display');
       } else if (thisChoice == 2){
         $('.rus-text').html('');
         $('.are-you-sure').addClass('no-display');
+        $('.choice-container').find('[id-choice="1"]').attr('id-data',  '');
       }
     });
   }
 
   // funzione finestra alert
-  function areYouSure(item){
+  function areYouSure(item, id){
     $('.are-you-sure').removeClass('no-display');
     var source = $("#rus-template").html();
     var template = Handlebars.compile(source);
@@ -56,6 +47,7 @@ $(document).ready(function(){
     };
     var html = template(context);
     $('.rus-text').append(html);
+    $('.choice-container').find('[id-choice="1"]').attr('id-data', id);
   }
 
 
