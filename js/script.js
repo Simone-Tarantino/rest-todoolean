@@ -10,6 +10,12 @@ $(document).ready(function(){
     addNewItem(newItem);
   });
 
+  $(document).on('click', '.delete', function(){
+    var thisItem = $(this);
+    var thisItemId = thisItem.parent().attr('item-id');
+    deleteItem(thisItemId);
+  });
+
   // funzione per ottenere tutti gli elementi della lista tramite una chiamata GET
   function getAndPrintAllItems(){
     $.ajax({
@@ -20,7 +26,6 @@ $(document).ready(function(){
         var template = Handlebars.compile(source);
         for (var i = 0; i < data.length; i++){
           var singleItem = data[i];
-          console.log(singleItem);
           var context = {
             item: singleItem.text,
             id: singleItem.id
@@ -52,5 +57,22 @@ $(document).ready(function(){
       }
     });
   }
+
+  // funzione per eliminare un elemento presente sulla lista tramite la chiamata DELETE
+  function deleteItem(id){
+    $.ajax({
+      url: 'http://157.230.17.132:3033/todos/' + id,
+      method: 'DELETE',
+      success: function(){
+        $('.todo-list').html('');
+        getAndPrintAllItems();
+      },
+      error: function(request, state, errors){
+        alert("C'è stato un errore" + errors);
+      }
+    });
+  }
+
+
 
 });
